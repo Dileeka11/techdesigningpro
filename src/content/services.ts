@@ -223,6 +223,100 @@ const commonPipingList = [
   "Generating bill of materials",
 ];
 
+// Shared by the Interior Designers and Architects tabs.
+const designSections = [
+  {
+    title: "SCHEMATIC DEVELOPMENT",
+    paragraphs: [
+      "As schematic design is the first phase of basic services for project design, we help the Interior Designers and Architects to design the preliminary ideas. At this stage in a project, we describe the project three-dimensionally. We can explore a range of alternative design concepts to define the character of the completed project and an optimum realization of the project program.",
+    ],
+    image: "img/img1",
+  },
+  {
+    title: "DESIGN DEVELOPMENT",
+    paragraphs: [
+      "During the design development phase, the project design is further refined. Plan arrangements, specific space accommodations, equipment and furnishings, building design, materials and colours, and complete definitions of all systems serving the project are developed. TechDesigningPro helps the Interior Designers and Architects to achieve this task in all the stages. All design decisions are completed during this phase in order to prepare the subsequent construction documents.",
+    ],
+    image: "img/img2",
+  },
+  {
+    title: "3D BUILDING INFORMATION MODELLING",
+    paragraphs: [
+      "In many ways, a 3D model can be created. A 3D model is a geometry-only model that contains only shapes and dimensions. But on the other hand, in a 3D BIM model, we add all the information to the different trade 3D models (Architecture, Structure, Electrical, Plumbing). Often this information includes, architectural, installation, material, and construction details. These 3D building models are linked and incorporated to produce a comprehensive 3D model. Therefore, in short, we create the data-based model of architectural design, structural design, and MEP design.",
+    ],
+    image: "img/img3",
+  },
+  {
+    title: "SHOP DRAWINGS / CONSTRUCTION DOCUMENTS",
+    paragraphs: [
+      "We prepare the drawings and specifications establishing the requirements for the construction of the project. The construction documents that we create describe the quality, configuration, size, and relationship of all components to be incorporated into the project. Our construction documents will be consistent with the project program, the construction budget, and the project schedule.",
+      "First, we submit the construction documents that include a complete set of architectural drawings (site plan, floor plans, sections, details, etc.) for review by Interior Designers, Architects and others. As determined by us, we prepare drawings at 50% completion, 100% completion. and then final submission for a final backcheck after all corrections are made.",
+      "We will make sure to incorporate all resulting changes into the 100% documents prior to submitting the final backcheck set for approval purposes.",
+    ],
+    image: "img/img4",
+  },
+  {
+    title: "PREPARING CLASH REPORTS",
+    paragraphs: [
+      "Engineering design requires effective coordination between several stakeholders for desired results. In the current era, any construction design project involves several stakeholders such as structural engineers, architects, contractors, suppliers and vendors, sometimes making the project completion process highly complex.",
+      "Interior Designers, Architects, structural engineers, MEP engineers (HVAC, Electrical and Plumbing), environmental engineers and other professionals create design models, independent from each other. Once all the models are integrated into the BIM modelling process, clash detection comes into the picture. We provide Clash Detection and Clash Report Generation services. Our clash report will be available in different formats such as text, XML, HTML etc.",
+    ],
+    image: "img/img5",
+  },
+  {
+    title: "LANDSCAPE MODELLING",
+    paragraphs: [
+      "Building information modelling can bring numerous benefits to landscape architects. Landscape architects work with general contractors, architects, real estate developers and project managers. It is important for them to work collaboratively with all project stakeholders using the right landscape architectural tools.",
+      "Delivering the landscape architecture in BIM could also be a mandate for some of the projects due to contractual requirements. The landscape BIM certainly helps all the stakeholders in the ecosystem to collaborate, communicate and deliver the project efficiently. The landscape BIM modelling can bring numerous advantages to the overall workflow and processes. It helps achieve faster drawing production, faster and accurate quantities and seamless collaboration with architects using BIM models. We help our clients prepare the overall project BIM model along with a detailed landscape model that includes all necessary landscape planting schemes such as large planting areas, hedges, planting centres, and mixes.",
+    ],
+    image: "img/img6",
+  },
+  {
+    title: "FACADE ENGINEERING (BIM & DETAILING)",
+    paragraphs: [
+      "The facade is the primary moderator of the environment for all buildings. Our team of facade detailers work closely with architects, structural engineers, contractors, manufacturers, installation specialists and consultants. We provide Facade BIM services for urban infrastructure, high-rise buildings, shopping malls, hotels, resorts, skyscrapers, apartments, and commercial buildings. Our Facade BIM Coordinators ensure that the design is fully coordinated among the other trades involved.",
+    ],
+    listTitle: "OUR FACADE BIM SERVICES INCLUDES:",
+    list: [
+      "3D Facade modelling for Glazing & Cladding Systems",
+      "3D Facade modelling Aluminium curtain wall system (Stick and Unitized systems)",
+      "Facade BIM services coordination (Resolution of clashes with architecture, structure, interior & MEP models)",
+      "Metal composite panel cladding",
+      "Facade BOQ or material take-off",
+      "As-built facade modelling",
+      "Facade shop drawings (floor/key plans, elevations, sections, Partial Plans, typical details & interface details",
+    ],
+    image: "img/img7",
+  },
+  {
+    title: "FAMILY CREATION",
+    paragraphs: [
+      "BIM families creation requires specialized expertise as each and every element of the family has to be modelled, keeping the geometry of the family at the core. Our BIM Library creation services for building product model catalogues to the architect, engineer, fabricator and manufacturer. Our Revit Family provides detailed information about a physical product. Components object and Material/Layered objects are two types of BIM objects.",
+    ],
+    listTitle: "OUR REVIT FAMILY CREATIONS SERVICES INCLUDE:",
+    list: [
+      "Architecture family creation",
+      "Structural family creation",
+      "MEP family creation",
+      "Building system families",
+      "BIM families",
+      "Structural components",
+      "Fixtures, custom applications",
+      "Partitions, windows, walls, and doors",
+      "Related custom and supporting content",
+    ],
+    image: "img/img8",
+  },
+  {
+    title: "VISUALIZATION",
+    paragraphs: [
+      "Visualizations and illustrations are key in the planning stage of a building project. Different possibilities and options can be compared with different stakeholders in an early stage. Our visualization services enhance communication through all the stages of a project and are especially vital in the marketing process. Our services include:",
+    ],
+    list: ["Visualized pictures", "3D animations", "Virtual reality"],
+    image: "img/img9",
+  },
+] satisfies DetailSection[];
+
 export const revit = {
   slug: "revit",
   title: "Revit",
@@ -244,102 +338,22 @@ export const revit = {
       image: "img/about_3",
     },
   ],
+  // Revit follows the same five design stages as AutoCAD (client request).
+  stages: autocad.sections.map((s) => ({
+    ...s,
+    paragraphs: s.paragraphs.map((p) => p.replace(/AutoCAD drawings/g, "Revit models").replace(/AutoCAD/g, "Revit")),
+  })) satisfies DetailSection[],
+  // Interior Designers always come first (client request).
   tabs: [
+    {
+      id: "interior",
+      label: "Interior Designers",
+      sections: designSections,
+    },
     {
       id: "architects",
       label: "Architects",
-      sections: [
-        {
-          title: "SCHEMATIC DEVELOPMENT",
-          paragraphs: [
-            "As schematic design is the first phase of basic services for project design, we help the Architects to design the preliminary ideas. At this stage in a project, we describe the project three-dimensionally. We can explore a range of alternative design concepts to define the character of the completed project and an optimum realization of the project program.",
-          ],
-          image: "img/img1",
-        },
-        {
-          title: "DESIGN DEVELOPMENT",
-          paragraphs: [
-            "During the design development phase, the project design is further refined. Plan arrangements, specific space accommodations, equipment and furnishings, building design, materials and colours, and complete definitions of all systems serving the project are developed. TechDesigningPro helps the Architects to achieve this task in all the stages. All design decisions are completed during this phase in order to prepare the subsequent construction documents.",
-          ],
-          image: "img/img2",
-        },
-        {
-          title: "3D BUILDING INFORMATION MODELLING",
-          paragraphs: [
-            "In many ways, a 3D model can be created. A 3D model is a geometry-only model that contains only shapes and dimensions. But on the other hand, in a 3D BIM model, we add all the information to the different trade 3D models (Architecture, Structure, Electrical, Plumbing). Often this information includes, architectural, installation, material, and construction details. These 3D building models are linked and incorporated to produce a comprehensive 3D model. Therefore, in short, we create the data-based model of architectural design, structural design, and MEP design.",
-          ],
-          image: "img/img3",
-        },
-        {
-          title: "SHOP DRAWINGS / CONSTRUCTION DOCUMENTS",
-          paragraphs: [
-            "We prepare the drawings and specifications establishing the requirements for the construction of the project. The construction documents that we create describe the quality, configuration, size, and relationship of all components to be incorporated into the project. Our construction documents will be consistent with the project program, the construction budget, and the project schedule.",
-            "First, we submit the construction documents that include a complete set of architectural drawings (site plan, floor plans, sections, details, etc.) for review by Architects and others. As determined by us, we prepare drawings at 50% completion, 100% completion. and then final submission for a final backcheck after all corrections are made.",
-            "We will make sure to incorporate all resulting changes into the 100% documents prior to submitting the final backcheck set for approval purposes.",
-          ],
-          image: "img/img4",
-        },
-        {
-          title: "PREPARING CLASH REPORTS",
-          paragraphs: [
-            "Engineering design requires effective coordination between several stakeholders for desired results. In the current era, any construction design project involves several stakeholders such as structural engineers, architects, contractors, suppliers and vendors, sometimes making the project completion process highly complex.",
-            "Architects, structural engineers, MEP engineers (HVAC, Electrical and Plumbing), environmental engineers and other professionals create design models, independent from each other. Once all the models are integrated into the BIM modelling process, clash detection comes into the picture. We provide Clash Detection and Clash Report Generation services. Our clash report will be available in different formats such as text, XML, HTML etc.",
-          ],
-          image: "img/img5",
-        },
-        {
-          title: "LANDSCAPE MODELLING",
-          paragraphs: [
-            "Building information modelling can bring numerous benefits to landscape architects. Landscape architects work with general contractors, architects, real estate developers and project managers. It is important for them to work collaboratively with all project stakeholders using the right landscape architectural tools.",
-            "Delivering the landscape architecture in BIM could also be a mandate for some of the projects due to contractual requirements. The landscape BIM certainly helps all the stakeholders in the ecosystem to collaborate, communicate and deliver the project efficiently. The landscape BIM modelling can bring numerous advantages to the overall workflow and processes. It helps achieve faster drawing production, faster and accurate quantities and seamless collaboration with architects using BIM models. We help our clients prepare the overall project BIM model along with a detailed landscape model that includes all necessary landscape planting schemes such as large planting areas, hedges, planting centres, and mixes.",
-          ],
-          image: "img/img6",
-        },
-        {
-          title: "FACADE ENGINEERING (BIM & DETAILING)",
-          paragraphs: [
-            "The facade is the primary moderator of the environment for all buildings. Our team of facade detailers work closely with architects, structural engineers, contractors, manufacturers, installation specialists and consultants. We provide Facade BIM services for urban infrastructure, high-rise buildings, shopping malls, hotels, resorts, skyscrapers, apartments, and commercial buildings. Our Facade BIM Coordinators ensure that the design is fully coordinated among the other trades involved.",
-          ],
-          listTitle: "OUR FACADE BIM SERVICES INCLUDES:",
-          list: [
-            "3D Facade modelling for Glazing & Cladding Systems",
-            "3D Facade modelling Aluminium curtain wall system (Stick and Unitized systems)",
-            "Facade BIM services coordination (Resolution of clashes with architecture, structure, interior & MEP models)",
-            "Metal composite panel cladding",
-            "Facade BOQ or material take-off",
-            "As-built facade modelling",
-            "Facade shop drawings (floor/key plans, elevations, sections, Partial Plans, typical details & interface details",
-          ],
-          image: "img/img7",
-        },
-        {
-          title: "FAMILY CREATION",
-          paragraphs: [
-            "BIM families creation requires specialized expertise as each and every element of the family has to be modelled, keeping the geometry of the family at the core. Our BIM Library creation services for building product model catalogues to the architect, engineer, fabricator and manufacturer. Our Revit Family provides detailed information about a physical product. Components object and Material/Layered objects are two types of BIM objects.",
-          ],
-          listTitle: "OUR REVIT FAMILY CREATIONS SERVICES INCLUDE:",
-          list: [
-            "Architecture family creation",
-            "Structural family creation",
-            "MEP family creation",
-            "Building system families",
-            "BIM families",
-            "Structural components",
-            "Fixtures, custom applications",
-            "Partitions, windows, walls, and doors",
-            "Related custom and supporting content",
-          ],
-          image: "img/img8",
-        },
-        {
-          title: "VISUALIZATION",
-          paragraphs: [
-            "Visualizations and illustrations are key in the planning stage of a building project. Different possibilities and options can be compared with different stakeholders in an early stage. Our visualization services enhance communication through all the stages of a project and are especially vital in the marketing process. Our services include:",
-          ],
-          list: ["Visualized pictures", "3D animations", "Virtual reality"],
-          image: "img/img9",
-        },
-      ] satisfies DetailSection[],
+      sections: designSections,
     },
     {
       id: "structural",
@@ -376,7 +390,7 @@ export const revit = {
         {
           title: "DESIGN DEVELOPMENT",
           paragraphs: [
-            "During the design development phase, the project design is further refined. Plan arrangements, specific space accommodations, equipment and furnishings, building design, materials and colours, and complete definitions of all systems serving the project are developed. TechDesigningPro help the Architects to achieve this task in all the stages. All design decisions are completed during this phase in order to prepare the subsequent construction documents.",
+            "During the design development phase, the project design is further refined. Plan arrangements, specific space accommodations, equipment and furnishings, building design, materials and colours, and complete definitions of all systems serving the project are developed. TechDesigningPro help the Interior Designers and Architects to achieve this task in all the stages. All design decisions are completed during this phase in order to prepare the subsequent construction documents.",
           ],
           image: "img/img23",
         },
@@ -595,7 +609,7 @@ export const revit = {
             },
             {
               title: "RESOLUTION & SUPPORT",
-              text: "TechDesigningPro works with Architects, Engineers to help in the design development stage. During these stages, we help to resolve the clashes and implement the agreed changes in the models to create coordinated models. We also give suggestions for the designs. This results in a reduced number of change orders. The change in the model is visible to the whole team and fosters collaboration between the contractor and other stakeholders.",
+              text: "TechDesigningPro works with Interior Designers, Architects, Engineers to help in the design development stage. During these stages, we help to resolve the clashes and implement the agreed changes in the models to create coordinated models. We also give suggestions for the designs. This results in a reduced number of change orders. The change in the model is visible to the whole team and fosters collaboration between the contractor and other stakeholders.",
             },
             {
               title: "ACCURATE PROJECT BIDS",
@@ -634,4 +648,4 @@ export const revit = {
   ],
 };
 
-export const allServices = [projectManagement, revit, autocad, procurement];
+export const allServices = [revit, autocad, procurement, projectManagement];

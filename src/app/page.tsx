@@ -129,7 +129,7 @@ export default function HomePage() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {home.services.items.map((s, i) => (
               <div key={s.href} data-reveal style={vars({ "--reveal-delay": `${i * 100}ms` })}>
-                <ServiceCard href={s.href} image={s.image} title={s.title} lines={s.lines} index={i} />
+                <ServiceCard href={s.href} image={s.image} title={s.title} lines={s.lines} hud={s.hud} index={i} />
               </div>
             ))}
           </div>

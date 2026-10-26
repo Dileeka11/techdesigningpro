@@ -12,8 +12,8 @@ const SANS = 'var(--font-sans, "Poppins"), system-ui, sans-serif';
 const PHASES = 6;
 const PHASE_LEN = 78;
 
-/** `dpr` is only passed by the website player to cap the 3D resolution; Studio/MP4 renders keep the default. */
-export const BIMShowreel = ({ dpr }: { dpr?: number }) => {
+/** `dpr` and `logo` are only passed by the website player (3D resolution cap, sub-folder-safe logo URL); Studio/MP4 renders keep the defaults. */
+export const BIMShowreel = ({ dpr, logo = staticFile("images/brand/logo.webp") }: { dpr?: number; logo?: string }) => {
   const frame = useCurrentFrame();
   const { width, height, fps, durationInFrames } = useVideoConfig();
 
@@ -42,7 +42,7 @@ export const BIMShowreel = ({ dpr }: { dpr?: number }) => {
           opacity: interpolate(frame, [8, 30, 455, 470], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
         }}
       >
-        <Img src={staticFile("images/brand/logo.webp")} style={{ height: 58, width: "auto" }} />
+        <Img src={logo} style={{ height: 58, width: "auto" }} />
       </Interactive.Div>
 
       {/* Phase progress */}
@@ -71,7 +71,7 @@ export const BIMShowreel = ({ dpr }: { dpr?: number }) => {
       </Track>
 
       <Sequence name="Outro" from={PHASES * PHASE_LEN} durationInFrames={durationInFrames - PHASES * PHASE_LEN}>
-        <Outro />
+        <Outro logo={logo} />
       </Sequence>
 
       {/* Fade in / out so the loop is seamless */}
@@ -89,7 +89,7 @@ export const BIMShowreel = ({ dpr }: { dpr?: number }) => {
   );
 };
 
-const Outro = () => {
+const Outro = ({ logo }: { logo: string }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const enter = (delay: number) => ({
@@ -103,7 +103,7 @@ const Outro = () => {
   return (
     <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", background: "rgba(7,7,9,0.55)" }}>
       <Interactive.Div name="Outro logo" style={{ ...enter(0) }}>
-        <Img src={staticFile("images/brand/logo.webp")} style={{ height: 120, width: "auto" }} />
+        <Img src={logo} style={{ height: 120, width: "auto" }} />
       </Interactive.Div>
       <Interactive.Div
         name="Outro kicker"

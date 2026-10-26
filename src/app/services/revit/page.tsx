@@ -61,6 +61,17 @@ export default function RevitPage() {
         </div>
       </section>
 
+      {/* The five design stages */}
+      <section className="relative pb-28 pt-8 md:pb-36">
+        <div className="container-x relative">
+          <div className="space-y-24 md:space-y-32">
+            {revit.stages.map((s, i) => (
+              <MediaSplit key={s.title} section={s} index={i} reverse={i % 2 === 1} step />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services by discipline */}
       <section className="relative pb-28 pt-8 md:pb-36">
         <div aria-hidden className="bg-blueprint mask-fade-b absolute inset-x-0 top-0 h-[600px] opacity-50" />

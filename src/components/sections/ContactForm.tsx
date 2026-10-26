@@ -7,9 +7,9 @@ import { ArrowIcon, CheckIcon } from "@/components/ui/Icons";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-const field =
+export const field =
   "peer w-full rounded-2xl border border-line-strong bg-ink/60 px-5 pb-3 pt-6 text-[15px] text-white outline-none transition-[border-color,box-shadow] duration-300 placeholder:text-transparent focus:border-gold-300/70 focus:shadow-[0_0_0_4px_rgba(214,170,72,0.12)]";
-const label =
+export const label =
   "pointer-events-none absolute left-5 top-4 origin-left text-[15px] text-mist transition-all duration-300 peer-focus:top-2 peer-focus:text-[11px] peer-focus:tracking-wider peer-focus:text-gold-300 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:tracking-wider";
 
 /**

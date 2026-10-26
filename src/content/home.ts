@@ -24,8 +24,14 @@ export const home = {
   services: {
     title: "Our Services",
     items: [
-      { title: "Project Management", lines: ["Project Management"], href: "/services/project-management/", image: "img/project" },
-      { title: "Revit", lines: ["Revit"], href: "/services/revit/", image: "img/about_2" },
+      {
+        title: "BIM / Revit",
+        lines: ["BIM / Revit"],
+        href: "/services/revit/",
+        image: "img/about_2",
+        // LOD readout in the card corner, as on the DraftCore site.
+        hud: { badge: "LOD 350", lines: ["TDP-SCAN / MODEL 2026", "REVIT · ID + ARCH"] },
+      },
       { title: "AutoCAD", lines: ["AutoCAD"], href: "/services/autocad/", image: "img/about_4" },
       {
         title: "Procurement Management (FF & E)",
@@ -33,6 +39,7 @@ export const home = {
         href: "/services/procurement-management/",
         image: "img/procurement",
       },
+      { title: "Project Management", lines: ["Project Management"], href: "/services/project-management/", image: "img/project" },
     ],
   },
   cta: {

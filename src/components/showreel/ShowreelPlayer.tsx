@@ -5,10 +5,12 @@ import { useEffect, useRef } from "react";
 import { BIMShowreel } from "@/remotion/BIMShowreel";
 import { SHOWREEL } from "@/remotion/config";
 import { useLite } from "@/lib/useLite";
+import { asset } from "@/lib/basePath";
 
 // The 1280x720 composition is shown at roughly that size, so a higher pixel ratio only costs GPU time.
-const FULL_PROPS = { dpr: 1 };
-const LITE_PROPS = { dpr: 0.75 };
+const LOGO = asset("/images/brand/logo.webp");
+const FULL_PROPS = { dpr: 1, logo: LOGO };
+const LITE_PROPS = { dpr: 0.75, logo: LOGO };
 
 /** Remotion Player running the BIM showreel live in the browser (no video file). */
 export default function ShowreelPlayer({ onReady }: { onReady?: () => void }) {

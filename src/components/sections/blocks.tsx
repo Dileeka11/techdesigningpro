@@ -136,7 +136,23 @@ export function LabeledPoints({ points }: { points: LabeledPoint[] }) {
 }
 
 /** Service card with image, used on Home and the Services overview. */
-export function ServiceCard({ href, image, title, lines, index, children }: { href: string; image: string; title: string; lines: string[]; index: number; children?: ReactNode }) {
+export function ServiceCard({
+  href,
+  image,
+  title,
+  lines,
+  index,
+  hud,
+  children,
+}: {
+  href: string;
+  image: string;
+  title: string;
+  lines: string[];
+  index: number;
+  hud?: { badge: string; lines: string[] };
+  children?: ReactNode;
+}) {
   return (
     <Tilt className="group h-full rounded-[28px]" max={6}>
       <Link href={href} aria-label={title} className="relative flex h-full min-h-[380px] flex-col justify-end overflow-hidden rounded-[28px] border border-line p-7">
@@ -152,6 +168,18 @@ export function ServiceCard({ href, image, title, lines, index, children }: { hr
         >
           <ArrowUpRightIcon />
         </span>
+        {hud ? (
+          <div aria-hidden className="absolute right-6 top-20 text-right font-mono text-[10px] uppercase tracking-[0.2em]">
+            <div className="inline-flex items-center gap-2 rounded border border-gold-300/40 bg-ink/60 px-2.5 py-1 text-gold-200 backdrop-blur">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold-300" /> {hud.badge}
+            </div>
+            <div className="mt-3 leading-5 text-mist">
+              {hud.lines.map((l) => (
+                <div key={l}>{l}</div>
+              ))}
+            </div>
+          </div>
+        ) : null}
         <div className="tilt-pop relative">
           <h5 className="text-2xl font-medium leading-tight text-white sm:text-[1.7rem]">
             {lines.map((l, i) => (

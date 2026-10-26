@@ -9,6 +9,7 @@ import { home } from "@/content/home";
 import { imageUrl } from "@/components/ui/Img";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { Socials } from "@/components/layout/Socials";
+import { OfficeList } from "@/components/sections/OfficeList";
 import { ArrowUpRightIcon, ChevronIcon, CloseIcon, MailIcon, MenuIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "@/components/ui/Icons";
 
 const serviceImages = Object.fromEntries(home.services.items.map((s) => [s.href, s.image]));
@@ -75,7 +76,7 @@ export function Header() {
           className={`hidden overflow-hidden transition-[max-height,opacity] duration-500 md:block ${scrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"}`}
         >
           <div className="container-x flex items-center justify-between border-b border-line py-2 text-[13px] text-mist">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-6 lg:gap-8">
               <a href={site.whatsappHref} target="_blank" rel="noopener" className="flex items-center gap-2 transition-colors hover:text-gold-200">
                 <PhoneIcon width={15} height={15} className="text-gold-300" />
                 {site.phone}
@@ -84,12 +85,9 @@ export function Header() {
                 <MailIcon width={15} height={15} className="text-gold-300" />
                 {site.email}
               </a>
-              <span className="flex items-center gap-2">
-                <PinIcon width={15} height={15} className="text-gold-300" />
-                {site.location}
-              </span>
+              <OfficeList compact />
             </div>
-            <Socials className="gap-4" />
+            <Socials className="hidden gap-4 lg:flex" />
           </div>
         </div>
 
@@ -105,14 +103,14 @@ export function Header() {
               <img src={asset("/images/brand/logo.webp")} alt={site.name} width={592} height={140} className="h-10 w-auto sm:h-12 xl:h-14" fetchPriority="high" />
             </Link>
 
-            <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+            <nav aria-label="Main" className="hidden items-center gap-0.5 lg:flex xl:gap-1">
               {nav.map((item) =>
                 item.children ? (
                   <div key={item.href} className="relative" onMouseEnter={openSvc} onMouseLeave={closeSvc}>
                     <div className="flex items-center">
                       <Link
                         href={item.href}
-                        className={`relative whitespace-nowrap rounded-full px-4 py-2 text-[15px] transition-colors ${
+                        className={`relative whitespace-nowrap rounded-full px-2.5 py-2 text-[14px] transition-colors xl:px-4 xl:text-[15px] ${
                           isActive(pathname, item.href) ? "text-gold-200" : "text-fog hover:text-white"
                         }`}
                       >
@@ -167,13 +165,13 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative whitespace-nowrap rounded-full px-4 py-2 text-[15px] transition-colors ${
+                    className={`relative whitespace-nowrap rounded-full px-2.5 py-2 text-[14px] transition-colors xl:px-4 xl:text-[15px] ${
                       isActive(pathname, item.href) ? "text-gold-200" : "text-fog hover:text-white"
                     }`}
                   >
                     {item.label}
                     {isActive(pathname, item.href) ? (
-                      <span className="absolute inset-x-4 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent" />
+                      <span className="absolute inset-x-2.5 -bottom-0.5 xl:inset-x-4 h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent" />
                     ) : null}
                   </Link>
                 ),
@@ -183,9 +181,16 @@ export function Header() {
             <div className="relative z-10 flex items-center gap-3">
               <div className="hidden sm:block">
               <Magnetic>
-                <a href={site.whatsappHref} target="_blank" rel="noopener" className="btn btn-gold h-11 px-5 text-sm">
+                <a
+                  href={site.whatsappHref}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={site.consultNow}
+                  className="btn btn-gold h-11 px-5 text-sm lg:max-xl:w-11 lg:max-xl:px-0"
+                >
                   <WhatsAppIcon width={18} height={18} />
-                  {site.consultNow}
+                  {/* icon-only between lg and xl so the 7-item menu fits */}
+                  <span className="lg:max-xl:sr-only">{site.consultNow}</span>
                 </a>
               </Magnetic>
               </div>
@@ -258,10 +263,10 @@ export function Header() {
               <MailIcon width={16} height={16} className="text-gold-300" />
               {site.email}
             </a>
-            <span className="flex items-center gap-3">
-              <PinIcon width={16} height={16} className="text-gold-300" />
-              {site.location}
-            </span>
+            <div className="flex items-start gap-3">
+              <PinIcon width={16} height={16} className="mt-0.5 shrink-0 text-gold-300" />
+              <OfficeList compact />
+            </div>
           </div>
         </nav>
       </div>

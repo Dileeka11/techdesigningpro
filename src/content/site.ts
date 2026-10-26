@@ -27,10 +27,10 @@ export const site = {
 export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] };
 
 export const servicesNav = [
-  { label: "Project Management", href: "/services/project-management/" },
   { label: "Revit", href: "/services/revit/" },
   { label: "AutoCAD", href: "/services/autocad/" },
   { label: "Procurement Management (FF & E)", href: "/services/procurement-management/" },
+  { label: "Project Management", href: "/services/project-management/" },
 ];
 
 export const nav: NavItem[] = [
@@ -38,6 +38,8 @@ export const nav: NavItem[] = [
   { label: "About Us", href: "/about-us/" },
   { label: "Services", href: "/services/", children: servicesNav },
   { label: "Gallery", href: "/gallery/" },
+  { label: "Our Clients", href: "/our-clients/" },
+  { label: "Projects", href: "/projects/" },
   { label: "Contact Us", href: "/contact-us/" },
 ];
 
@@ -51,6 +53,8 @@ export const footer = {
     { label: "About Us", href: "/about-us/" },
     { label: "Services", href: "/services/" },
     { label: "Gallery", href: "/gallery/" },
+    { label: "Our Clients", href: "/our-clients/" },
+    { label: "Projects", href: "/projects/" },
     { label: "Contact Us", href: "/contact-us/" },
   ],
   companyTitle: "Company",
