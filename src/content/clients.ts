@@ -18,5 +18,6 @@ export const clients = {
     { name: "Royse", logo: "/images/clients/royse.png" },
     { name: "DCI", logo: "/images/clients/dci.png" },
     { name: "Sonuvo Design by Soul", logo: "/images/clients/sonuvo.png" },
+    { name: "LMD Studio Design Consultants", logo: "/images/clients/lmd.png" },
   ] as Client[],
 };
